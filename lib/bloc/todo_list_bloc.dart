@@ -73,6 +73,7 @@ class TodoListBloc {
 
     //refresh with current filter value
     String search = _searchValueStream.value;
+
     fetchTodoList(filterName: search);
   }
 
