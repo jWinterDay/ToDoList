@@ -5,6 +5,7 @@ import 'package:todo_list/database.dart';// as database;
 
 class TodoListApiProvider {
   Future<TodoListModel> getTodoList({String filterName = ''}) async {
+    filterName = filterName??'';
     //check for injection
     RegExp reg = RegExp(r"^(\w{0,20})$", caseSensitive: false);
     if(!reg.hasMatch(filterName??'')) {
