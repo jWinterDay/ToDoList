@@ -5,9 +5,9 @@ import 'package:todo_list/database.dart';// as database;
 
 class TodoListApiProvider {
   Future<TodoListModel> getTodoList({String filterName = ''}) async {
-    filterName = filterName??'';
+    filterName = (filterName??'').trim();
     //check for injection
-    RegExp reg = RegExp(r"^(\w{0,20})$", caseSensitive: false);
+    RegExp reg = RegExp(r"^(\w{0,30})$", caseSensitive: false);
     if(!reg.hasMatch(filterName??'')) {
       return new TodoListModel(error: 'wrong type of search', isLoading: false, list: null);
     }
@@ -19,7 +19,7 @@ class TodoListApiProvider {
       select *
         from todo_list
        where name like '%$filterName%'
-       order by is_finished, name-- is_finished, name
+       order by is_finished, name
       '''
     );// query('todo_list', where: "name like '%$filterName%'", orderBy: 'is_finished');
     List<TodoModel> list = res.isNotEmpty ? res.map((p) => TodoModel.fromJson(p)).toList() : [];
