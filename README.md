@@ -1,1 +1,1 @@
-![Screenshot](https://github.com/jWinterDay/ToDoList/tree/master/images/todolist.gif)
+![Screenshot](todolist.gif)
